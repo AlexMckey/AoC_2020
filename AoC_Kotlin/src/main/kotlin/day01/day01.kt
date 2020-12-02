@@ -32,7 +32,7 @@ object day01 {
 }
 
 fun main() {
-    val expenses = DayInput.inputInts("input01.txt").toArray()
+    val expenses = DayInput.inputIntsArray("input01.txt")
     val target = 2020
     val res1 = day01.twoSum(expenses, target)
     println(res1.reduce(Int::times)) // 388075
