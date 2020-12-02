@@ -11,15 +11,12 @@ fun main() {
         val ch = policyStr[1][0]
         val password = arr[1]
         val passLen = password.length
-        val passCharCount = password.groupingBy { it }.eachCount()
-        val chInPassword = passCharCount.containsKey(ch)
-        val chCheckLowCount = chInPassword && counts[0] <= passCharCount[ch]!!
-        val chCheckUpperCount = chInPassword && counts[1] >= passCharCount[ch]!!
-        val chCheckFirstPos = passLen >= counts[0] && password[counts[0]-1] == ch
-        val chCheckSecondPos = passLen >= counts[1] && password[counts[1]-1] == ch
+        val passCharCount = password.count { it == ch }
+        val policyPos = counts.filter { it <= passLen }.map { it-1 }
+        val passPosCount = password.slice(policyPos).filter { it == ch }.count()
         Triple(arr[1],
-            chCheckLowCount && chCheckUpperCount,
-            (chCheckFirstPos || chCheckSecondPos) && !(chCheckFirstPos && chCheckSecondPos))
+            passCharCount >= counts[0] && passCharCount <= counts[1],
+            passPosCount == 1)
     }
     val res1 = checkPolicies.filter{it.second}.count()
     println(res1) // 445

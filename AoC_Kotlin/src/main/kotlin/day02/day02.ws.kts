@@ -24,9 +24,8 @@ val inputs = strs.lines().map{
     val policy = Policy(ch,counts[0],counts[1])
     policy to arr[1]
 }.toMap()
-inputs.count {
-    it.key.checkCountPolicy(it.value)
-}
-inputs.count {
-    it.key.checkPosPolicy(it.value)
-}
+inputs.count {it.key.checkCountPolicy(it.value)}
+inputs.count {it.key.checkPosPolicy(it.value)}
+val s = "cccccccccc"
+val arr = arrayOf(1,20).filter { it <= s.length}
+s.slice(arr.toList())
