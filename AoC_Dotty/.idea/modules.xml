@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dotty-simple.iml" filepath="$PROJECT_DIR$/.idea/modules/dotty-simple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AoC_Dotty.iml" filepath="$PROJECT_DIR$/.idea/modules/AoC_Dotty.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/dotty-simple-build.iml" filepath="$PROJECT_DIR$/.idea/modules/dotty-simple-build.iml" />
     </modules>
   </component>
