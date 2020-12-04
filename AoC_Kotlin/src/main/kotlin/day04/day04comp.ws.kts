@@ -1,6 +1,6 @@
 val s = "byr:1957 pid:177cm ecl:blu eyr:2020 hcl:#cfa07d\n" +
         "iyr:2010 hgt:183cm"
-val r = """eyr:(?<eyr>\d{4})|cid:(?<cid>\d+)|byr:(?<byr>\d{4})|iyr:(?<iyr>\d{4})|hgt:(?<hgt>\d{3}cm|\d{2}in)|pid:(?<pid>[0-9]{9)|hcl:(?<hcl>#[0-9a-f]{6})|ecl:(?<ecl>amb|blu|brn|gry|grn|hzl|oth)""".toRegex(RegexOption.MULTILINE)
+val r = """eyr:(?<eyr>\d{4})|cid:(?<cid>\d+)|byr:(?<byr>\d{4})|iyr:(?<iyr>\d{4})|hgt:(?<hgt>\d{3}cm|\d{2}in)|pid:(?<pid>[0-9]{9})|hcl:(?<hcl>#[0-9a-f]{6})|ecl:(?<ecl>amb|blu|brn|gry|grn|hzl|oth)""".toRegex(RegexOption.MULTILINE)
 val passFields = listOf("byr","iyr","eyr","hgt","hcl","ecl","pid","cid")
 val d = r.findAll(s.replace(" ","\n")).map {
     val arr = it.value.split(":")
