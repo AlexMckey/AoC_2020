@@ -1,9 +1,10 @@
 package day01
 
-import InputLib.DayInput
+import AoCLib.InputTransform.toInts
+import AoCLib.SomeDay
 
-object day01 {
-    fun twoSum(nums: IntArray, target: Int): Int {
+object Day01: SomeDay(2020,1) {
+    private fun twoSum(nums: IntArray, target: Int): Int {
         val diffs = HashSet<Int>()
         for (num in nums) {
             val diff = target - num
@@ -12,7 +13,7 @@ object day01 {
         }
         throw IllegalArgumentException("No solution")
     }
-    fun threeSum(nums: IntArray, target: Int): Int {
+    private fun threeSum(nums: IntArray, target: Int): Int {
         val ia = nums.sorted()
         val len = ia.size
         for (i in 0 .. len - 3) {
@@ -29,13 +30,14 @@ object day01 {
         }
         throw IllegalArgumentException("No solution")
     }
+
+    override fun first(data: String): Any? {
+        return twoSum(data.toInts().toIntArray(), 2020)
+    } // 388075 Time: 23ms
+
+    override fun second(data: String): Any? {
+        return threeSum(data.toInts().toIntArray(), 2020)
+    } // 293450526 Time: 5ms
 }
 
-fun main() {
-    val expenses = DayInput.inputIntsArray("input01.txt")
-    val target = 2020
-    val res1 = day01.twoSum(expenses, target)
-    println(res1) // 388075
-    val res2 = day01.threeSum(expenses, target)
-    println(res2) // 293450526
-}
+fun main() = SomeDay.mainify(Day01)

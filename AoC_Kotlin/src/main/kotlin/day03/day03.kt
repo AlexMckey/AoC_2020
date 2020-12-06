@@ -1,25 +1,28 @@
 package day03
 
-import InputLib.DayInput
+import AoCLib.InputTransform.toStrs
+import AoCLib.SomeDay
+import AoCLib.Point
 
-data class Point(val x: Int, val y: Int) {
-    override fun toString(): String = "[x:$x,y:$y]"
-//    operator fun plus(other: Point) = Point(other.x + x, other.y + y)
-    operator fun plus(other: Pair<Int, Int>) = Point(other.first + x, other.second + y)
+object Day03: SomeDay(2020,3) {
+    private fun points(fromPoint: Point, angle: Point) = generateSequence(fromPoint) { it + angle }
+    private fun pointsByAngle(area: List<String>, angle: Point): List<Char> {
+        val height = area.size
+        val weight = area.first().length
+        val idxs = points(Point.Start, angle).takeWhile { it.y < height }
+        return idxs.map { area[it.y][it.x % weight] }.toList()
+    }
+
+    override fun first(data: String): Any? {
+        return pointsByAngle(data.toStrs(), Point(3,1)).count { it == '#' }
+    } // 162 Time: 29ms
+
+    override fun second(data: String): Any? {
+        val area = data.toStrs()
+        val angles = listOf(1 to 1, 3 to 1, 5 to 1, 7 to 1, 1 to 2).map(Point::toPoint)
+        return angles.map{ pointsByAngle(area,it).count { it == '#' } }
+            .map { it.toLong() }.reduce(Long::times)
+    } // 3064612320 Time: 3ms
 }
 
-fun main() {
-    val area = DayInput.inputStrsList("input03.txt")
-    val height = area.size
-    val weight = area.first().length
-    val start = Point(0,0)
-    val angle = 3 to 1
-    fun points(angle: Pair<Int,Int>) = generateSequence(start) { it + angle }.takeWhile { it.y < height }.toList()
-    val idxs = points(angle)
-    val res1 = idxs.count { area[it.y][it.x % weight] == '#' }
-    println(res1) // 162
-    val angles = listOf(1 to 1, 3 to 1, 5 to 1, 7 to 1, 1 to 2)
-    val res2 = angles.map { points(it).count { area[it.y][it.x % weight] == '#' } }
-        .map { it.toLong() }.reduce(Long::times)
-    println(res2) // 3064612320
-}
+fun main() = SomeDay.mainify(Day03)

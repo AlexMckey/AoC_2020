@@ -1,10 +1,10 @@
 package day02
 
-import InputLib.DayInput
+import AoCLib.InputTransform.toStrs
+import AoCLib.SomeDay
 
-fun main() {
-    val strs = DayInput.inputStrsList("input02.txt")
-    val checkPolicies = strs.map{
+object Day02: SomeDay(2020,2) {
+    fun checkPolicies(strs: List<String>) = strs.map{
         val arr = it.split(": ")
         val policyStr = arr[0].split(" ")
         val ints = policyStr[0].split("-").map { it.toInt() }
@@ -18,8 +18,14 @@ fun main() {
             passCharCount >= ints[0] && passCharCount <= ints[1],
             passPosCount == 1)
     }
-    val res1 = checkPolicies.filter{it.second}.count()
-    println(res1) // 445
-    val res2 = checkPolicies.filter{it.third}.count()
-    println(res2) // 491
+
+    override fun first(data: String): Any? {
+        return checkPolicies(data.toStrs()).filter{it.second}.count()
+    } // 445 Time: 34ms
+
+    override fun second(data: String): Any? {
+        return checkPolicies(data.toStrs()).filter{it.third}.count()
+    } // 491 Time: 7ms
 }
+
+fun main() = SomeDay.mainify(Day02)
