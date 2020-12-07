@@ -7,16 +7,11 @@ object Day07: SomeDay(2020,7) {
     private fun findAncestorBag(bags: Map<String,String>, bag: String): Set<String> =
         bags.filter { it.value.contains(bag)}.keys
 
-    private fun makeTree(rules: Map<String, Map<String,Int>>, bagColor: String, cnt: Int = 1): BagTree {
-        val res = BagTree(bagColor,cnt)
-        res.children.addAll(rules[bagColor]
-            ?.map { makeTree(rules, it.key, it.value) } ?: emptyList())
-        return res
-    }
-    class BagTree(val bagColor: String, val cnt: Int = 1) {
-        val children: MutableList<BagTree> = mutableListOf()
+    private fun makeTree(rules: Map<String, Map<String,Int>>, bagColor: String, cnt: Int = 1): BagTree =
+        BagTree(rules[bagColor]?.map { makeTree(rules, it.key, it.value) }, cnt)
+    class BagTree(private val children: List<BagTree>?, private val cnt: Int = 1) {
         val innerBagCount: Int
-            get() = cnt * children.fold(1) { acc, bagTree -> acc + bagTree.innerBagCount }
+            get() = cnt * (children?.fold(1) { acc, bagTree -> acc + bagTree.innerBagCount } ?: 0)
     }
 
     override fun first(data: String): Any? {
