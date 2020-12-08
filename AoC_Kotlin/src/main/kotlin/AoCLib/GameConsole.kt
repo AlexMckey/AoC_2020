@@ -10,20 +10,20 @@ enum class ConsoleState {
     Running, Stop, Halt, InputSuspend
 }
 
-abstract class Op{
+abstract class Op(open val param: Int = 0){
     abstract fun Do(state: CPUState): CPUState
 }
-data class Nop(val param: Int = 0): Op() {
+data class Nop(override val param: Int = 0) : Op(param) {
     override fun Do(state: CPUState): CPUState = state.step()
 }
-data class Acc(val param: Int = 0): Op() {
+data class Acc(override val param: Int = 0): Op(param) {
     override fun Do(state: CPUState): CPUState = state.changeAcc(param)
 }
-data class Jmp(val param: Int = 1): Op() {
+data class Jmp(override val param: Int = 1): Op(param) {
     override fun Do(state: CPUState): CPUState = state.changeIp(param)
 }
 
-val opRegex = """(?<op>\w\w\w) (?<param>(?:\+|-)\d+)""".toRegex()
+val opRegex = """(?<op>\w\w\w) (?<param>[+\-]\d+)""".toRegex()
 
 class GameConsole(programText: String) {
     private var cpuState: CPUState = CPUState()
