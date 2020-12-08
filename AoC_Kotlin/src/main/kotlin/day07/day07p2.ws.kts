@@ -27,6 +27,11 @@ val s = "light red bags contain 1 bright white bag, 2 muted yellow bags.\n" +
         "dotted black bags contain no other bags."
 val r1 = """(\w+ \w+) bags? contain (.+)\.\n""".toRegex()
 val r2 = """(?:(\d+) )?(\w+ \w+) bags?(?:, )?""".toRegex()
+val s1 = s.split('\n').first()
+s1
+val (color, innerBag) = """(\w+ \w+) bags? contain (.+)\.""".toRegex().find(s1)!!.destructured
+color
+innerBag
 val rr = r1.findAll(s).map { b ->
     b.groupValues[1] to r2.findAll(b.groupValues[2])
         .map {
