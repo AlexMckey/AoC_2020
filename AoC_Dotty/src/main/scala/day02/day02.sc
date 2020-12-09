@@ -6,4 +6,4 @@ val policyPasswords = strs.lines().map(s => {
   val policyArr = arr.head.split(" ")
   val policyInts = policyArr.head.split("-").map(_.toInt)
   Policy(policyArr.last.head,policyInts.head,policyInts.last)
-} )
+} ).toArray
