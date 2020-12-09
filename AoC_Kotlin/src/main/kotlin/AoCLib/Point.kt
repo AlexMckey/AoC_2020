@@ -44,3 +44,11 @@ data class Point(var x: Int = 0, var y: Int = 0) {
         fun decYPoint(): (Point) -> Point = { p -> Point(p.x, p.y - 1) }
     }
 }
+
+fun List<String>.toGrid() = this
+    .flatMapIndexed { col, line ->
+        line.mapIndexed { row, char ->
+            Point(row, col) to char
+        }
+    }
+    .associate { it }

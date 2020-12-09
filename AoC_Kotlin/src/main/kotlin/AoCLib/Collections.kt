@@ -5,6 +5,49 @@ package AoCLib
  */
 
 /**
+ * sum number elements of Pair
+ */
+fun <T: Number> Triple<T, T, T>.sum(): Long = this.first.toLong() + this.second.toLong() + this.third.toLong()
+fun Pair<Int,Int>.sum(): Int = this.first + this.second
+fun Pair<Long,Long>.sum(): Long = this.first + this.second
+
+fun <T : Any> List<T>.asInfiniteSequence(): Sequence<T> {
+    var index = 0
+    return generateSequence(get(index)) { get(++index % size) }
+}
+
+fun <T> List<T>.repeat(times: Int): List<T> {
+    val sequence = sequence { repeat(times) { yieldAll(this@repeat) } }
+    val list = ArrayList<T>(sequence.count())
+    sequence.forEach { list.add(it) }
+    return list
+}
+
+inline fun <T> List<T>.forAllPairs(block: (T, T) -> Unit) {
+    for (i in 0 until size) {
+        for (j in (i + 1) until size) {
+            block(get(i), get(j))
+        }
+    }
+}
+
+inline fun <T> List<T>.forAllUniquePairs(block: (T, T) -> Unit) {
+    forAllPairs { i, j ->
+        block(i, j)
+        block(j, i)
+    }
+}
+
+fun <T> List<T>.chunkedBy(selector: (T) -> Boolean): List<List<T>> =
+    fold(mutableListOf(mutableListOf<T>())) { acc, item ->
+        if (selector(item)) acc.add(mutableListOf())
+        else acc.last().add(item)
+        acc
+    }
+
+fun <T> List<T>.headAndTail(): Pair<T,List<T>> = this.first() to this.drop(1)
+
+/**
  * Generates the sequence of all permutations of items in current list.
  */
 fun <T : Any> List<T>.permutations(): Sequence<List<T>> =
