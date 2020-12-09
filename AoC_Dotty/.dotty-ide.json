@@ -1,0 +1,17 @@
+[ {
+  "id" : "root/compile",
+  "compilerVersion" : "3.0.0-M2",
+  "compilerArguments" : [ ],
+  "sourceDirectories" : [ "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\src\\main\\scala", "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\src\\main\\scala-3.0.0-M2", "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\src\\main\\scala-3", "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\src\\main\\java", "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\target\\scala-3.0.0-M2\\src_managed\\main" ],
+  "dependencyClasspath" : [ "C:\\Users\\AlexMckey\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala3-library_3.0.0-M2\\3.0.0-M2\\scala3-library_3.0.0-M2-3.0.0-M2.jar", "C:\\Users\\AlexMckey\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-library\\2.13.4\\scala-library-2.13.4.jar" ],
+  "classDirectory" : "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\target\\scala-3.0.0-M2\\classes",
+  "projectDependencies" : [ ]
+}, {
+  "id" : "root/test",
+  "compilerVersion" : "3.0.0-M2",
+  "compilerArguments" : [ ],
+  "sourceDirectories" : [ "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\src\\test\\scala", "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\src\\test\\scala-3.0.0-M2", "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\src\\test\\scala-3", "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\src\\test\\java", "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\target\\scala-3.0.0-M2\\src_managed\\test" ],
+  "dependencyClasspath" : [ "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\target\\scala-3.0.0-M2\\classes", "C:\\Users\\AlexMckey\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala3-library_3.0.0-M2\\3.0.0-M2\\scala3-library_3.0.0-M2-3.0.0-M2.jar", "C:\\Users\\AlexMckey\\AppData\\Local\\Coursier\\cache\\v1\\https\\repo1.maven.org\\maven2\\org\\scala-lang\\scala-library\\2.13.4\\scala-library-2.13.4.jar" ],
+  "classDirectory" : "D:\\YandexDisk\\DevsSamples\\Dotty\\scala3-example\\target\\scala-3.0.0-M2\\test-classes",
+  "projectDependencies" : [ "root/compile" ]
+} ]
