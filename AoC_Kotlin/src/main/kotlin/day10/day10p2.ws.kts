@@ -1,4 +1,5 @@
 import AoCLib.series
+import AoCLib.trib
 
 val s1 = "16\n" +
         "10\n" +
@@ -59,11 +60,11 @@ val v2 = r2.series().map { if (it.first() == 1) it.size-1 else 0 }
 v2
 v2.map { 1 shl it }.map { if (it == 8) 7 else it }.reduce(Int::times)
 fun fibonacciSeq() = sequence {
-    var prevCur = 1L to 1L
+    var prevCur = Triple(1L,1L,2L)
     while (true) {
         yield (prevCur.first)
-        prevCur = prevCur.second to prevCur.first + prevCur.second
+        prevCur = Triple(prevCur.second, prevCur.third, prevCur.first + prevCur.second + prevCur.third)
     }
 }
 fun fib(n: Int) = fibonacciSeq().drop(n).first()
-fib(6)
+trib(5)
