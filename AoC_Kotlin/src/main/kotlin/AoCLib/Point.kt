@@ -34,19 +34,18 @@ data class Point(var x: Int = 0, var y: Int = 0) {
         fun Point.toPair(): Pair<Int,Int> = this.x to this.y
         val Zero = Point(0,0)
         val Start = Zero
-        val toLeft = Point(-1,0)
-        val toRight = Point(1,0)
-        val toUp = Point(0,1)
-        val toDown = Point(0,-1)
-        val toL = toLeft
-        val toR = toRight
-        val toU = toUp
-        val toD = toDown
+        val toU = Point(0,1)
+        val toD = Point(0,-1)
+        val toL = Point(-1,0)
+        val toR = Point(1,0)
         val toUL = toU + toL
         val toUR = toU + toR
         val toDR = toD + toR
         val toDL = toD + toL
-        fun Point.toDirPoints(dir: Point) = generateSequence(this + dir) { it + dir }
-        fun Point.inBounds(xRange: IntRange, yRange: IntRange) = this.x in xRange && this.y in yRange
     }
 }
+
+fun Point.toDirPoints(dir: Point) = generateSequence(this + dir) { it + dir }
+fun Point.inBounds(xRange: IntRange, yRange: IntRange) = this.x in xRange && this.y in yRange
+fun <T : Any> Point.inBounds(grid: ListGrid<T>) = grid.contains(this)
+fun <T : Any> Point.inBounds(grid: MapGrid<T>) = grid.containsKey(this)
