@@ -1,9 +1,9 @@
 import AoCLib.*
-import AoCLib.GameConsole.CPU
-import AoCLib.GameConsole.ConsoleState
-import AoCLib.GameConsole.Op
-import AoCLib.GameConsole.Nop
-import AoCLib.GameConsole.Jmp
+import AoCLib.CPU
+import AoCLib.ConsoleState
+import AoCLib.Op
+import AoCLib.Nop
+import AoCLib.Jmp
 
 val s = "nop +0\n" +
         "acc +1\n" +

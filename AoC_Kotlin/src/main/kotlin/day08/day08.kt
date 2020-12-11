@@ -1,11 +1,11 @@
 package day08
 
 import AoCLib.*
-import AoCLib.GameConsole.CPU
-import AoCLib.GameConsole.ConsoleState
-import AoCLib.GameConsole.Op
-import AoCLib.GameConsole.Nop
-import AoCLib.GameConsole.Jmp
+import AoCLib.CPU
+import AoCLib.ConsoleState
+import AoCLib.Op
+import AoCLib.Nop
+import AoCLib.Jmp
 
 object Day08: SomeDay(2020,8) {
     override fun first(data: String): Any? {

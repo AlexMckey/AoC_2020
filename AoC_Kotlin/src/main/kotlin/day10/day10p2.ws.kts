@@ -1,5 +1,5 @@
-import AoCLib.Collections.series
-import AoCLib.Math.trib
+import AoCLib.series
+import AoCLib.trib
 
 val s1 = "16\n" +
         "10\n" +

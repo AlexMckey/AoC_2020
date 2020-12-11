@@ -1,6 +1,6 @@
 package day05
 
-import AoCLib.Inputs.replaceAll
+import AoCLib.replaceAll
 import AoCLib.SomeDay
 import kotlin.math.max
 import kotlin.math.min

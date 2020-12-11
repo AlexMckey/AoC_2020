@@ -1,11 +1,7 @@
-import AoCLib.Grid.toGrid
-import AoCLib.Grid.bounds
-import AoCLib.Point
-import AoCLib.Point.Companion.inBounds
+import AoCLib.*
 import AoCLib.Point.Companion.toD
 import AoCLib.Point.Companion.toDL
 import AoCLib.Point.Companion.toDR
-import AoCLib.Point.Companion.toDirPoints
 import AoCLib.Point.Companion.toL
 import AoCLib.Point.Companion.toR
 import AoCLib.Point.Companion.toU
@@ -42,7 +38,7 @@ val s3 = ".##.##.\n" +
         "#.#.#.#\n" +
         ".##.##."
 val sl = s3.lines()
-var seats = sl.toGrid()
+var seats = sl.toMapGrid()
     .filterValues { it != '.' }
 seats
 val curSeat = seats.filterValues { it == 'L' }.keys.first()

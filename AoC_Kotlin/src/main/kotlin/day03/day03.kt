@@ -1,6 +1,6 @@
 package day03
 
-import AoCLib.Inputs.toStrs
+import AoCLib.toStrs
 import AoCLib.SomeDay
 import AoCLib.Point
 

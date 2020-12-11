@@ -1,10 +1,10 @@
 package day09
 
-import AoCLib.Inputs.toLongs
+import AoCLib.toLongs
 import AoCLib.SomeDay
-import AoCLib.Collections.headAndTail
-import AoCLib.Collections.pairs
-import AoCLib.Collections.sum
+import AoCLib.headAndTail
+import AoCLib.pairs
+import AoCLib.sum
 import kotlin.collections.ArrayDeque
 
 object Day09: SomeDay(2020,9) {

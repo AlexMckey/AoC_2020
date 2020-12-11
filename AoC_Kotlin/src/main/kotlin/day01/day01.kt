@@ -1,6 +1,6 @@
 package day01
 
-import AoCLib.Inputs.toInts
+import AoCLib.toInts
 import AoCLib.SomeDay
 
 object Day01: SomeDay(2020,1) {

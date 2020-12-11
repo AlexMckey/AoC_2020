@@ -1,6 +1,6 @@
 package day06
 
-import AoCLib.Inputs.splitByBlankLines
+import AoCLib.splitByBlankLines
 import AoCLib.SomeDay
 
 object Day06: SomeDay(2020,6) {

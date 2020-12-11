@@ -1,16 +1,10 @@
 package day11
 
-import AoCLib.Grid.bounds
-import AoCLib.Grid.toGrid
-import AoCLib.Inputs.toStrs
-import AoCLib.Point
-import AoCLib.Point.Companion.inBounds
-import AoCLib.Point.Companion.toDirPoints
-import AoCLib.SomeDay
+import AoCLib.*
 
 object Day11: SomeDay(2020,11) {
     private fun List<String>.convertToSeats() = this
-        .toGrid()
+        .toMapGrid()
         .filterValues { it != '.' }
     private fun printSeats(xRange: IntRange, yRange: IntRange, seats: Map<Point,Char>) {
         for (y in yRange) {
