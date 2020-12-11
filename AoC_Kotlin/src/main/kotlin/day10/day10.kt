@@ -1,9 +1,9 @@
 package day10
 
-import AoCLib.InputTransform.toInts
+import AoCLib.Inputs.toInts
 import AoCLib.SomeDay
-import AoCLib.series
-import AoCLib.tribonacciSeq
+import AoCLib.Collections.series
+import AoCLib.Math.tribonacciSeq
 
 object Day10:SomeDay(2020,10) {
     private fun joltDifferences(jolts: List<Int>): Int {

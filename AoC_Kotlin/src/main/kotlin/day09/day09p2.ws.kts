@@ -1,5 +1,5 @@
-import AoCLib.pairs
-import AoCLib.series
+import AoCLib.Collections.pairs
+import AoCLib.Collections.sum
 
 val l = listOf(35,20,15,25,47,40,62,55,65,95,102,117,150,182,127,219,299,277,309,576)
     .map { it.toLong() }
@@ -18,7 +18,7 @@ fun checkWindow(winNums: List<Long>, winCnt: Int, num: Long) =
         .find { it.first == num }
 fun findSeqs4Num(winNums: List<Long>, maxWindows: Int, num: Long): List<Long>? {
     var i = 2
-    var res: Pair<Long,List<Long>>? = null
+    var res: Pair<Long, List<Long>>?
     do {
         res = checkWindow(winNums,i,num)
         i++

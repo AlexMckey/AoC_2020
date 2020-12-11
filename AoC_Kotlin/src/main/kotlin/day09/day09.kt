@@ -1,10 +1,10 @@
 package day09
 
-import AoCLib.InputTransform.toLongs
+import AoCLib.Inputs.toLongs
 import AoCLib.SomeDay
-import AoCLib.headAndTail
-import AoCLib.pairs
-import AoCLib.sum
+import AoCLib.Collections.headAndTail
+import AoCLib.Collections.pairs
+import AoCLib.Collections.sum
 import kotlin.collections.ArrayDeque
 
 object Day09: SomeDay(2020,9) {
@@ -23,7 +23,7 @@ object Day09: SomeDay(2020,9) {
             .find { it.sum() == num }
     private fun findSeqsForNum(preamble: List<Long>, preambleSize: Int, num: Long): List<Long>? {
         var i = 2
-        var res: List<Long>? = null
+        var res: List<Long>?
         do {
             res = checkWindow(preamble,i,num)
             i++

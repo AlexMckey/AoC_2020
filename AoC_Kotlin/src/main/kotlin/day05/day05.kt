@@ -1,13 +1,13 @@
 package day05
 
-import AoCLib.InputTransform.replaceAll
+import AoCLib.Inputs.replaceAll
 import AoCLib.SomeDay
 import kotlin.math.max
 import kotlin.math.min
 
 object Day05: SomeDay(2020,5) {
     //fun calcSeatID(s: String): Int {
-    //    fun posToKoef(ch: Char): Int = if (ch == 'B' || ch == 'R') 1 else -1
+    //    fun posToKoef(ch: Char.kt): Int = if (ch == 'B' || ch == 'R') 1 else -1
     //    fun calcPos(l: String, seed: Int): Int  =
     //        l.fold(seed to seed) {(acc,seed), i -> acc + seed / 2 * posToKoef(i) to seed / 2}.first - 1
     //    return 8 * calcPos(s.take(7),128) / 2 + calcPos(s.drop(7),8) / 2

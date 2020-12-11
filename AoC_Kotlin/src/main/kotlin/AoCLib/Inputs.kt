@@ -1,6 +1,6 @@
 package AoCLib
 
-object InputTransform {
+object Inputs {
     fun String.toInts(): List<Int> = this.lines().map { it.toInt() }
     fun String.toLongs(): List<Long> = this.lines().map { it.toLong() }
     fun String.toStrs(): List<String> = this.lines()

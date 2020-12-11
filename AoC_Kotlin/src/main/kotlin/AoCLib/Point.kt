@@ -25,9 +25,9 @@ data class Point(var x: Int = 0, var y: Int = 0) {
         return abs(this.x - p2.y) + abs(this.y - p2.y)
     }
 
-    fun near4(): List<Point> = listOf(this + toLeft, this + toRight, this + toUp, this + toDown)
-    fun near8(): List<Point> = listOf(this + toLeft, this + toRight, this + toUp, this + toDown,
-        this + toLeft + toUp, this + toRight + toUp,this + toLeft + toDown, this + toRight + toDown)
+    fun near4(): List<Point> = listOf(this + toL, this + toR, this + toU, this + toD)
+    fun near8(): List<Point> = listOf(this + toL, this + toR, this + toU, this + toD,
+        this + toUL, this + toUR,this + toDL, this + toDR)
 
     companion object {
         fun toPoint(p: Pair<Int,Int>): Point = Point(p.first, p.second)
@@ -38,17 +38,15 @@ data class Point(var x: Int = 0, var y: Int = 0) {
         val toRight = Point(1,0)
         val toUp = Point(0,1)
         val toDown = Point(0,-1)
-        fun incXPoint(): (Point) -> Point = { p -> Point(p.x + 1, p.y) }
-        fun decXPoint(): (Point) -> Point = { p -> Point(p.x - 1, p.y) }
-        fun incYPoint(): (Point) -> Point = { p -> Point(p.x, p.y + 1) }
-        fun decYPoint(): (Point) -> Point = { p -> Point(p.x, p.y - 1) }
+        val toL = toLeft
+        val toR = toRight
+        val toU = toUp
+        val toD = toDown
+        val toUL = toU + toL
+        val toUR = toU + toR
+        val toDR = toD + toR
+        val toDL = toD + toL
+        fun Point.toDirPoints(dir: Point) = generateSequence(this + dir) { it + dir }
+        fun Point.inBounds(xRange: IntRange, yRange: IntRange) = this.x in xRange && this.y in yRange
     }
 }
-
-fun List<String>.toGrid() = this
-    .flatMapIndexed { col, line ->
-        line.mapIndexed { row, char ->
-            Point(row, col) to char
-        }
-    }
-    .associate { it }

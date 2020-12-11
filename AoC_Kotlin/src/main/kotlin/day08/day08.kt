@@ -1,10 +1,15 @@
 package day08
 
 import AoCLib.*
+import AoCLib.GameConsole.CPU
+import AoCLib.GameConsole.ConsoleState
+import AoCLib.GameConsole.Op
+import AoCLib.GameConsole.Nop
+import AoCLib.GameConsole.Jmp
 
 object Day08: SomeDay(2020,8) {
     override fun first(data: String): Any? {
-        val console = GameConsole(data)
+        val console = CPU(data)
         console.runProgram()
         return console.acc
     } // 1317 Time: 35ms
@@ -16,7 +21,7 @@ object Day08: SomeDay(2020,8) {
         return newProgram
     }
     override fun second(data: String): Any? {
-        val console = GameConsole(data)
+        val console = CPU(data)
         val program = console.program
         val programs = program.withIndex().filter {it.value is Nop || it.value is Jmp }
             .map { it.index }.map { changeBug(program,it) }

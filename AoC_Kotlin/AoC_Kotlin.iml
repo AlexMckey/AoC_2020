@@ -13,12 +13,12 @@
     <orderEntry type="module-library" scope="TEST">
       <library name="kotlin-test-junit5">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/libs/kotlin-test-junit5-1.4.20.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-test-annotations-common-1.4.20.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-stdlib-common-1.4.20.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-test-1.4.20.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-test-common-1.4.20.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-stdlib-1.4.20.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-test-junit5-1.4.10.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-test-annotations-common-1.4.10.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-stdlib-common-1.4.10.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-test-1.4.10.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-test-common-1.4.10.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-stdlib-1.4.10.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/annotations-13.0.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/junit-jupiter-api-5.0.0.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/apiguardian-api-1.0.0.jar!/" />
@@ -32,12 +32,12 @@
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/libs/kotlin-test-junit5-1.4.20-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-test-annotations-common-1.4.20-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-stdlib-common-1.4.20-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-test-1.4.20-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-test-common-1.4.20-sources.jar!/" />
-          <root url="jar://$MODULE_DIR$/libs/kotlin-stdlib-1.4.20-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-test-junit5-1.4.10-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-test-annotations-common-1.4.10-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-stdlib-common-1.4.10-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-test-1.4.10-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-test-common-1.4.10-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/libs/kotlin-stdlib-1.4.10-sources.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/annotations-13.0-sources.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/junit-jupiter-api-5.0.0-sources.jar!/" />
           <root url="jar://$MODULE_DIR$/libs/apiguardian-api-1.0.0-sources.jar!/" />
@@ -90,5 +90,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
+    <orderEntry type="library" name="KotlinJavaRuntime (2)" level="project" />
   </component>
 </module>

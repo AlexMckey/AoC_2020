@@ -1,4 +1,9 @@
 import AoCLib.*
+import AoCLib.GameConsole.CPU
+import AoCLib.GameConsole.ConsoleState
+import AoCLib.GameConsole.Op
+import AoCLib.GameConsole.Nop
+import AoCLib.GameConsole.Jmp
 
 val s = "nop +0\n" +
         "acc +1\n" +
@@ -15,7 +20,7 @@ ps.map {
     val (op,param) = r.matchEntire(it)!!.destructured
     op to param.toInt()
 }
-val gc = GameConsole(s)
+val gc = CPU(s)
 gc.runProgram()
 gc.acc
 gc.state
