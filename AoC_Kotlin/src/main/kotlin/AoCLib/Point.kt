@@ -14,6 +14,7 @@ data class Point(var x: Int = 0, var y: Int = 0) {
     operator fun minusAssign(other: Point) = run { x -= other.x; y -= other.y }
     operator fun unaryMinus() = Point(-x, -y)
     operator fun times(other: Int) = Point(x * other, y * other)
+    operator fun times(other: Point) = Point(x * other.x, y * other.y)
     operator fun timesAssign(other: Int) = run { x *= other; y *= other }
     fun angle(other: Point) = atan2((other - this).y.toDouble(), (other - this).x.toDouble()) * 180 / PI
     fun distance(other: Point): Double {
