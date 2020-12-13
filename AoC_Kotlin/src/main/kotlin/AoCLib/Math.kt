@@ -24,11 +24,11 @@ fun gcd(a: Long, b: Long): Long {
     return tb
 }
 
-fun lcf(a: Int, b: Int): Int {
+fun lcm(a: Int, b: Int): Int {
     return a * b / gcd(a, b)
 }
 
-fun lcf(a: Long, b: Long): Long {
+fun lcm(a: Long, b: Long): Long {
     return a * b / gcd(a, b)
 }
 
