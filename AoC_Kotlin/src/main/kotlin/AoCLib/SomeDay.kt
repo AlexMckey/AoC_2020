@@ -8,6 +8,7 @@ import kotlin.system.measureTimeMillis
  */
 open class SomeDay(val year: Int, val day: Int) {
     private val inputDir = "d:\\YandexDisk\\DevsExercises\\AdventOfCode\\$year\\PuzzleInput\\"
+    //private val inputDir = "C:\\Users\\MakievskyAV\\Desktop\\Devs\\AoC_2020\\PuzzleInput\\"
     private val filepath = inputDir + "input${day.toString().padStart(2,'0')}.txt"
     val data: String = File(filepath).bufferedReader().readText().trim()
 
