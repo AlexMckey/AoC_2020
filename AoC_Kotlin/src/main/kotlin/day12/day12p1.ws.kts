@@ -1,4 +1,5 @@
-import AoCLib.PathState
+import day12.Day12.PathState
+import day12.Day12.direction
 
 val s = "F10\n" +
         "N3\n" +
@@ -9,15 +10,12 @@ val a = s.lines().map { it.first() to it.drop(1).toInt() }
 a
 var cur = PathState()
 a.forEach{ cur = when(it.first) {
-    'N' -> cur.toN(it.second)
-    'E' -> cur.toE(it.second)
-    'S' -> cur.toS(it.second)
-    'W' -> cur.toW(it.second)
-    'F' -> cur.forw(it.second)
-    'R' -> cur.rotR(it.second)
-    'L' -> cur.rotL(it.second)
-    else -> cur }
+    'F' -> cur.move(it.second, cur.dir)
+    'R' -> cur.rotate(it.second, clockwise = true)
+    'L' -> cur.rotate(it.second, clockwise = false)
+    else -> cur.move(it.second, it.first.direction())
+    }
     println(cur)
 }
 cur
-cur.p.manhattanDistance()
+cur.point.manhattanDistance()

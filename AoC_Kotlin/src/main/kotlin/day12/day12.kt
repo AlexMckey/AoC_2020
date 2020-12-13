@@ -3,49 +3,47 @@ package day12
 import AoCLib.*
 
 object Day12:SomeDay(2020,12) {
+    enum class Direction(val p: Point) { N(Point.toU), E(Point.toR), S(Point.toD), W(Point.toL)}
+    fun Char.direction() = Direction.valueOf(this.toString())
+
+    data class PathState(val point: Point = Point.Zero, val dir: Direction = Direction.E) {
+        fun move(v: Int, d: Direction) = PathState(point + d.p * v, dir)
+        fun rotate(v: Int, clockwise: Boolean = true /* R */) =
+            PathState(point, Direction.values()[(dir.ordinal + (v / 90 * if(clockwise) 1 else 3)) % 4])
+    }
+
     override fun first(data: String): Any? {
         var cur = PathState()
         data.toStrs().map { it.first() to it.drop(1).toInt() }
             .forEach{ cur = when(it.first) {
-                'N' -> cur.toN(it.second)
-                'E' -> cur.toE(it.second)
-                'S' -> cur.toS(it.second)
-                'W' -> cur.toW(it.second)
-                'F' -> cur.forw(it.second)
-                'R' -> cur.rotR(it.second)
-                'L' -> cur.rotL(it.second)
-                else -> cur
+                'F' -> cur.move(it.second, cur.dir)
+                'R' -> cur.rotate(it.second, clockwise = true)
+                'L' -> cur.rotate(it.second, clockwise = false)
+                else -> cur.move(it.second, it.first.direction())
             } }
-        return cur.p.manhattanDistance()
+        return cur.point.manhattanDistance()
     } // 1106 Time: 27ms
 
-    private fun rotate(navPoint: PathState, angle: Int, clockwise: Boolean = true): PathState {
-        if (!clockwise) return rotate(navPoint,360 - angle)
-        val newDir = navPoint.rotR(angle).d
-        val newPoint = when (angle % 360) {
-            90 -> Point(navPoint.p.y,-navPoint.p.x)
-            180 -> Point(-navPoint.p.x,-navPoint.p.y)
-            270 -> Point(-navPoint.p.y,navPoint.p.x)
-            else -> Point(navPoint.p.x,navPoint.p.y)}
-        return PathState(newPoint,newDir)
+    fun navRotate(navPoint: PathState, angle: Int, clockwise: Boolean = true): PathState {
+        if (!clockwise) return navRotate(navPoint,360 - angle)
+        var np = navPoint.point
+        repeat(angle / 90) { np = np.rotR() }
+        return PathState(np, navPoint.dir)
     }
 
     override fun second(data: String): Any? {
         var curPos = PathState()
-        var navPoint = PathState()//PathState(Point(10,1))
+        var navPoint = PathState(Point(10,1))
         data.toStrs().map { it.first() to it.drop(1).toInt() }
             .forEach { when(it.first) {
-                'N' -> navPoint = navPoint.toN(it.second)
-                'E' -> navPoint = navPoint.toE(it.second)
-                'S' -> navPoint = navPoint.toS(it.second)
-                'W' -> navPoint = navPoint.toW(it.second)
-                'F' -> curPos = PathState(curPos.p + navPoint.p * it.second, curPos.d)
-                'R' -> navPoint = rotate(navPoint,it.second,true)
-                'L' -> navPoint = rotate(navPoint,it.second,false)
-                else -> {} }
+                'R' -> navPoint = navRotate(navPoint, it.second, clockwise = true)
+                'L' -> navPoint = navRotate(navPoint, it.second, clockwise = false)
+                'F' -> curPos = PathState(curPos.point + navPoint.point * it.second, curPos.dir)
+                else -> navPoint = navPoint.move(it.second, it.first.direction()) }
+                println("$it   =>   cur: $curPos   nav: $navPoint")
             }
-        return curPos.p.manhattanDistance()
-    } // 107281
+        return curPos.point.manhattanDistance()
+    } // 107281 Time: 2ms
 }
 
 fun main() = SomeDay.mainify(Day12)

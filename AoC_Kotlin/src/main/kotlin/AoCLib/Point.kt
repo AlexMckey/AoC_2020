@@ -16,6 +16,9 @@ data class Point(var x: Int = 0, var y: Int = 0) {
     operator fun times(other: Int) = Point(x * other, y * other)
     operator fun times(other: Point) = Point(x * other.x, y * other.y)
     operator fun timesAssign(other: Int) = run { x *= other; y *= other }
+    fun rotR() = Point(y,-x)
+    fun rotL() = Point(-y,x)
+    fun turnBack() = Point(-x,-y)
     fun angle(other: Point) = atan2((other - this).y.toDouble(), (other - this).x.toDouble()) * 180 / PI
     fun distance(other: Point): Double {
         val delta = other - this
@@ -32,7 +35,6 @@ data class Point(var x: Int = 0, var y: Int = 0) {
 
     companion object {
         fun toPoint(p: Pair<Int,Int>): Point = Point(p.first, p.second)
-        fun Point.toPair(): Pair<Int,Int> = this.x to this.y
         val Zero = Point(0,0)
         val Start = Zero
         val toU = Point(0,1)
@@ -46,6 +48,7 @@ data class Point(var x: Int = 0, var y: Int = 0) {
     }
 }
 
+fun Point.toPair(): Pair<Int,Int> = this.x to this.y
 fun Point.toDirPoints(dir: Point) = generateSequence(this + dir) { it + dir }
 fun Point.inBounds(xRange: IntRange, yRange: IntRange) = this.x in xRange && this.y in yRange
 fun <T : Any> Point.inBounds(grid: ListGrid<T>) = grid.contains(this)
