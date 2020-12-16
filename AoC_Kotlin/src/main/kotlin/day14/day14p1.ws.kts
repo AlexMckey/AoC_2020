@@ -23,8 +23,8 @@ acc = acc.or(maskOr)
 acc = acc.and(maskAnd)
 acc
 fun masked(acc: Long, mask: String): Long {
-    val maskOr = res1.groupValues[1].replace('X','0').toLong(2)
-    val maskAnd = res1.groupValues[1].replace('X','1').toLong(2)
+    val maskOr = mask.replace('X','0').toLong(2)
+    val maskAnd = mask.replace('X','1').toLong(2)
     var res = acc
     res = res.or(maskOr)
     return res.and(maskAnd)
