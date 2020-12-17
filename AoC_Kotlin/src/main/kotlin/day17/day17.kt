@@ -14,6 +14,8 @@ object Day17:SomeDay(2020,17) {
                 .flatMap { it.near() }
                 .groupingBy { it }.eachCount()
                 .filter { it.value == 3 }
+                //.groupBy { it }
+                //.filter { it.value.size == 3 }
                 .map { it.key })
     override fun first(data: String): Any? {
         var cube = data.lines()
