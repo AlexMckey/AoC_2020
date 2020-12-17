@@ -5,7 +5,12 @@ import kotlin.math.abs
 import kotlin.math.atan2
 import kotlin.math.sqrt
 
-data class Point(var x: Int = 0, var y: Int = 0) {
+abstract class Nears<T> {
+    abstract fun near(): List<T>
+    protected val r = -1..1
+}
+
+data class Point(var x: Int = 0, var y: Int = 0): Nears<Point>() {
     override fun toString(): String = "[x:$x,y:$y]"
     operator fun plus(other: Point) = Point(other.x + x, other.y + y)
     operator fun plus(other: Pair<Int, Int>) = Point(other.first + x, other.second + y)
@@ -46,6 +51,8 @@ data class Point(var x: Int = 0, var y: Int = 0) {
         val toDR = toD + toR
         val toDL = toD + toL
     }
+
+    override fun near(): List<Point> = near8()
 }
 
 fun Point.toPair(): Pair<Int,Int> = this.x to this.y
