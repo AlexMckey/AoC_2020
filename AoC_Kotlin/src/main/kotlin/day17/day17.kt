@@ -27,14 +27,14 @@ object Day17:SomeDay(2020,17) {
     } // 317 Time: 52ms
 
     override fun second(data: String): Any? {
-        var hiperCube = data.lines()
+        var hyperCube = data.lines()
             .flatMapIndexed{ y, l -> l
                 .mapIndexed { x, ch ->
                     if (ch == '#') Point4D(x,y,0,0)
                     else null
                 } }.filterNotNull().toSet()
-        repeat(6) {hiperCube = next(hiperCube) }
-        return hiperCube.size
+        repeat(6) {hyperCube = next(hyperCube) }
+        return hyperCube.size
     } // 1692 Time: 183ms
 }
 
