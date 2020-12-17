@@ -20,9 +20,9 @@ object Day16:SomeDay(2020,16){
     private tailrec fun associateFiledNames(multipleFields: Map<Int, Set<String>>, singleFields: Map<Int, Set<String>> = emptyMap()): List<Pair<Int,String>> {
         if (multipleFields.isEmpty()) return singleFields.map { it.key to it.value.first() }
         val singles = multipleFields.filter { it.value.size == 1 }
-        val reductedFileds = multipleFields.filter { !singles.keys.contains(it.key) }
+        val reductedFields = multipleFields.filter { !singles.keys.contains(it.key) }
             .mapValues { singles.values.fold(it.value){acc, set -> acc.minus(set) } }
-        return associateFiledNames(reductedFileds,singleFields+singles)
+        return associateFiledNames(reductedFields,singleFields+singles)
 }
 
     override fun second(data: String): Any? {
@@ -30,9 +30,9 @@ object Day16:SomeDay(2020,16){
         val rulesStr = threePart.first()
         val ruleR = """(?<field>(?:\w|\s)+): (?<fr1>\d+)-(?<fr2>\d+) or (?<sr1>\d+)-(?<sr2>\d+)\n?""".toRegex()
         val rules = ruleR.findAll(rulesStr)
-            .map{it.groups[1]!!.value to {x: Int -> (it.groups[2]!!.value.toInt()..it.groups[3]!!.value.toInt())
-                .union(it.groups[4]!!.value.toInt()..it.groups[5]!!.value.toInt())
-                .contains(x)}}
+            .map{
+                val (name, r1, r2, r3, r4) = it.destructured
+                name to {x: Int -> x in r1.toInt()..r2.toInt() || x in r3.toInt()..r4.toInt()}}
             .toList()
         val myTicket = threePart.drop(1).first().split('\n').last()
             .split(',')
@@ -58,7 +58,7 @@ object Day16:SomeDay(2020,16){
             .slice(departureIdxs)
             .map { it.toLong() }
             .reduce(Long::times)
-    } // 4810284647569 Time: 1597ms
+    } // 4810284647569 Time: 45ms
 }
 
 fun main() = SomeDay.mainify(Day16)
