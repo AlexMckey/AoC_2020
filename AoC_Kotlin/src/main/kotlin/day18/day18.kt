@@ -33,8 +33,7 @@ object Day18:SomeDay(2020,18) {
             args.add(ops.pop())
         val acc = Stack<Long>()
         while (args.isNotEmpty()){
-            val op = args.removeAt(0)
-            acc.push(when (op) {
+            acc.push(when (val op = args.removeAt(0)) {
                 "+" -> acc.pop() + acc.pop()
                 "*" -> acc.pop() * acc.pop()
                 else -> op.toLong()
@@ -45,9 +44,11 @@ object Day18:SomeDay(2020,18) {
 
     override fun first(data: String): Any? =
         data.toStrs().map { calc(it) }.sum()
+    // 5783053349377 Time: 50ms
 
     override fun second(data: String): Any? =
         data.toStrs().map { calc(it, mapOf("*" to 0, "+" to 1)) }.sum()
+    // 74821486966872 Time: 9ms
 }
 
 fun main() = SomeDay.mainify(Day18)
