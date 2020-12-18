@@ -7,15 +7,15 @@ import java.util.*
 object Day18:SomeDay(2020,18) {
     private val rs = """[()\d+*]""".toRegex()
 
-    private fun calc(s: String, opPrecedences:Map<String,Int> = mapOf("+" to 0, "*" to 0)): Long {
-        val args = mutableListOf<String>()
+    private fun tokenize(s: String, opPrecedences: Map<String,Int>): MutableList<String> {
+        val tokens = mutableListOf<String>()
         val ops = Stack<String>()
         rs.findAll(s).forEach {
             when (val op = it.value) {
                 "(" -> ops.push("(")
                 ")" -> {
                     while (ops.peek() != "(")
-                        args.add(ops.pop())
+                        tokens.add(ops.pop())
                     ops.pop()
                 }
                 "*","+" -> {
@@ -23,24 +23,29 @@ object Day18:SomeDay(2020,18) {
                             && ops.peek() != "("
                             && opPrecedences.getOrDefault(ops.peek(),0)
                             >= opPrecedences.getOrDefault(op,0))
-                        args.add(ops.pop())
+                        tokens.add(ops.pop())
                     ops.push(op)
                 }
-                else -> args.add(op)
+                else -> tokens.add(op)
             }
         }
-        while (ops.isNotEmpty())
-            args.add(ops.pop())
+        tokens.addAll(ops.reversed())
+        return tokens
+    }
+    private fun evaluate(tokens: MutableList<String>): Long {
         val acc = Stack<Long>()
-        while (args.isNotEmpty()){
-            acc.push(when (val op = args.removeAt(0)) {
+        tokens.forEach{
+            acc.push(when (it) {
                 "+" -> acc.pop() + acc.pop()
                 "*" -> acc.pop() * acc.pop()
-                else -> op.toLong()
+                else -> it.toLong()
             })
         }
-        return acc.pop()
+        return acc.last()
     }
+
+    private fun calc(s: String, opPrecedences:Map<String,Int> = mapOf("+" to 0, "*" to 0)): Long =
+        evaluate(tokenize(s,opPrecedences))
 
     override fun first(data: String): Any? =
         data.toStrs().map { calc(it) }.sum()
