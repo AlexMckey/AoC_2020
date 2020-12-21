@@ -14,15 +14,15 @@ fun List<String>.toListGrid() = this.map { it.toCharArray().toList() }
  * transpose(List(List(1, 2, 3), List(4, 5, 6), List(7, 8)))
  * -> List(List(1, 4, 7), List(2, 5, 8), List(3, 6))
  */
-fun <T> transpose(xs: ListGrid<T>): ListGrid<T> {
+fun <T> ListGrid<T>.transpose(): ListGrid<T> {
     // Helpers
     fun <T> List<T>.head(): T = this.first()
     fun <T> List<T>.tail(): List<T> = this.takeLast(this.size - 1)
     fun <T> T.append(xs: List<T>): List<T> = listOf(this).plus(xs)
 
-    xs.filter { it.isNotEmpty() }.let { ys ->
+    this.filter { it.isNotEmpty() }.let { ys ->
         return when (ys.isNotEmpty()) {
-            true -> ys.map { it.head() }.append(transpose(ys.map { it.tail() }))
+            true -> ys.map { it.head() }.append(ys.map { it.tail() }.transpose())
             else -> emptyList()
         }
     }
