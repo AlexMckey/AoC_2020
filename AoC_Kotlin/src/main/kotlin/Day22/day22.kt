@@ -1,4 +1,4 @@
-package Day22
+package day22
 
 import AoCLib.SomeDay
 import AoCLib.splitByBlankLines

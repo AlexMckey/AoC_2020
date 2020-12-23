@@ -1,5 +1,4 @@
 import AoCLib.splitByBlankLines
-import Day22.Day22
 
 val s = "Player 1:\n" +
         "9\n" +
