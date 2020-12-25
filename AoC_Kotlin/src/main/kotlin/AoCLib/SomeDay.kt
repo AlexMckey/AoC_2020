@@ -12,6 +12,8 @@ open class SomeDay(val year: Int, val day: Int) {
     private val filepath = inputDir + "input${day.toString().padStart(2,'0')}.txt"
     val data: String = File(filepath).bufferedReader().readText().trim()
 
+    open val title: String = ""
+
     open fun first(data: String): Any? = null
 
     open fun second(data: String): Any? = null
@@ -20,6 +22,7 @@ open class SomeDay(val year: Int, val day: Int) {
         fun mainify(someday: SomeDay) {
             with(someday) {
                 println("Year $year, day $day")
+                println(if (title.isNotEmpty()) "\"$title\"" else "")
                 measureTimeMillis {
                     println("First: ${first(data)?.toString() ?: "unsolved"}")
                 }.run {
